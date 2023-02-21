@@ -1,0 +1,71 @@
+
+<h1 style="color: rgb(0, 0, 212); margin: 15px; text-align: center; text-decoration: underline;">Paiment</h1>
+<br>
+<fieldset style="color:rgba(0, 53, 151, 0.855); margin: 10px 100PX; " class="border-5"  >
+    <legend >Informations générales</legend>
+    <form #f="ngForm">
+    
+
+        <div class="form-group" >
+            <label for="inputAddress2">Nom</label>
+            <input type="text" class="form-control" name="nom" placeholder="enter votre nom" [(ngModel)]="Nom" required  #nom="ngModel"   >
+          </div>
+          <div class=" alert alert-danger" *ngIf="nom.invalid && nom.touched">
+            <div *ngIf="nom.errors?.['required']">name is required</div>
+        </div>
+          
+      <div class="form-group col-md">
+        <label for="inputEmail4">Email</label>
+        <input type="email" class="form-control" name="email" placeholder="enter votre email" [(ngModel)]="Email" required pattern="\w+\.\w+@(\w{3,})" #email="ngModel" >
+      </div>
+      <div class=" alert alert-danger" *ngIf="email.invalid && email.touched">
+        <div *ngIf="email.errors?.['required']">email is required</div>
+        <div *ngIf="email.errors?.['pattern']">Email format is invalid (should be xxxx.yyyy@zzz)</div>
+    </div>
+
+
+      <br>
+      <fieldset style="width: 100%;" class="border" style="margin: 10px 100PX;">
+            <legend >Informations de payement</legend>
+        
+        
+      <div class="form-group col-md" style="margin: 10px 100PX;">
+        <label for="inputPassword4">Type de carte</label>
+        <input type="text" class="form-control" name="type" placeholder="enter type carte" [(ngModel)]="Type" required  #type="ngModel">
+      </div>
+      <div class=" alert alert-danger" *ngIf="type.invalid && type.touched">
+        <div *ngIf="type.errors?.['required']">type carte is required</div>
+    </div>
+    
+    <div class="form-group" style="margin: 10px 100PX;">
+      <label for="inputAddress">Numéro carte</label>
+      <input type="text" class="form-control" name="id" placeholder="enter Num carte" [(ngModel)]="Num" required minlength="16" #num="ngModel" >
+    </div>
+    <div class=" alert alert-danger"*ngIf="num.invalid && num.touched">
+      <div *ngIf="num.errors?.['required']">NUM carte is required</div>
+      <div *ngIf="num.errors?.['minlength']">NUM carte must have 16 caracters</div>
+  </div>
+   
+    <div class="form-row" style="margin: 10px 100PX;">
+      <div class="form-group col-md">
+        <label for="inputCity">Date expiration</label>
+        <input type="text" class="form-control" name="date" placeholder="enter date expiration" [(ngModel)]="Date" required  #date="ngModel">
+      </div>
+      <div class=" alert alert-danger" *ngIf="date.invalid && date.touched">
+        <div *ngIf="date.errors?.['required']">date is required</div>
+    </div>
+
+      <div class="form-group col-md" >
+        <label for="inputState">Code</label>
+        <input type="password" class="form-control" id="inputCode" [disabled]="f.invalid" >
+        </div>
+        
+      
+    </div>
+</fieldset>
+
+    <button type="submit" class="btn btn-primary" style="margin: 10px 100PX;" [disabled]="f.invalid">Ajouter</button>
+
+  
+  </form>
+</fieldset>

@@ -1,0 +1,52 @@
+<form #f="ngForm">         <!--ngForm: controler toutes les inputs-->
+    <div class="form-group"  style="margin: 10px 100PX;">
+
+        <h1 >App E-Commerce</h1>
+
+          
+        <div class="mb-3">
+            <label class="mr-sm-2" style="text-decoration: underline gold;" for="inlineFormCustomSelect">Id</label>
+            <input type="text" class="form-control" name="id" placeholder="enter id" [(ngModel)]="product.id" required min="1" #id="ngModel" >
+        </div>
+        <div class=" alert alert-danger"*ngIf="id.invalid && id.touched">
+            <div *ngIf="id.errors?.['required']">ID is required</div>
+            <div *ngIf="id.errors?.['minlength']">id must have at least 1 caracter</div>
+        </div>
+
+          
+    
+      <label style="text-decoration: underline gold;">Title</label>
+      <input type="text" class="form-control" name="Title" placeholder="enter title" [(ngModel)]="product.title" required minlength="5" #Title="ngModel">
+      
+    <div class=" alert alert-danger" *ngIf="Title.invalid && Title.touched">
+        <div *ngIf="Title.errors?.['required']">Title is required</div>
+        <div *ngIf="Title.errors?.['minlength']">Title must have at least 5 caracters</div>
+    </div>
+
+<br>
+    <div class="form-group">
+        <label style="text-decoration:  underline gold;" >Quantity</label>
+        <input type="text" class="form-control" name="Quantity" placeholder="enter quantity" [(ngModel)]="product.quantity" required #Quantity="ngModel" >
+    </div>
+    <div class=" alert alert-danger"*ngIf="Quantity.invalid && Quantity.touched">
+        <div>Quantity is required</div>
+    </div>
+
+
+<br>
+    <div class="form-group">
+        <label style="text-decoration: underline gold;">Price</label>
+        <input type="text" class="form-control" name="price" placeholder="enter price" [(ngModel)]="product.price" required #Price="ngModel">
+    </div>
+    <div class=" alert alert-danger" *ngIf="Price.invalid && Price.touched">
+        <div>Price is required</div>
+    </div>
+
+<br>
+      
+      <button type="button" class="btn btn-warning" [disabled]="f.invalid" (click)="ajouter()">Save</button>  <!--disabled: proprety binding-->
+                                                         <!--kent f blast "f.invalid" haka : product.id==null ama badltha khatr zedna fl form mloul blkol "ngForm"-->
+</div>
+    
+    
+  </form>
