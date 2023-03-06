@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { Product } from '../Core/Models/product';
+import { ConsumerProductService } from '../services/consumer-product.service';
 import { ProductServiceService } from '../services/product-service.service';
 
 @Component({
@@ -11,14 +12,22 @@ import { ProductServiceService } from '../services/product-service.service';
 export class AddProductComponent implements OnInit {
   product!: Product;
   listProduct!:Product[];
-  constructor(private serviceProduct:ProductServiceService,private route:Router) { }   //zdna service router hoa l bch yaatini navigateByUrl
+  constructor(private serviceProduct:ProductServiceService,private route:Router ,private consumerProductSercice:ConsumerProductService) { }   //zdna service router hoa l bch yaatini navigateByUrl
 
   ngOnInit(): void {
     this.product=new Product();
+
   }
+
+  
   ajouter(){
-    this.serviceProduct.addProduct(this.product);
-    this.route.navigateByUrl('/products')  // hedhy bch k nnzl save yraj3ni ll page product
+    //this.serviceProduct.addProduct(this.product);
+    //this.route.navigateByUrl('/products')  // hedhy bch k nnzl save yraj3ni ll page product
+  
+    this.consumerProductSercice.addProduct(this.product).subscribe({
+      next : () =>this.route.navigateByUrl('/products')
+    })
+  
   }
 
   

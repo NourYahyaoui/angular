@@ -11,11 +11,12 @@ import { ProductServiceService } from '../services/product-service.service';
 export class DetailProductComponent implements OnInit {
 list!:Product[]
   id!: number
+  product!:Product
   constructor(private route:ActivatedRoute,private serviceProduct:ProductServiceService) { } //pour recuperer l id (hatyt service:activatedRoute)
 
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id']   //baad nmchy ll html nhotou bch tsyrlou l affichage
-    this.list=this.serviceProduct.listProduct;
+    this.product=this.serviceProduct.listProduct[this.id];
     
   }
 

@@ -1,0 +1,18 @@
+<div  >
+    <img src="..\..\assets\P1T026-2-PLAYCDGBIGREDHEARTPRINTANDEMBLEMT-SHIRTWHITE1_da46741c-319a-48bb-9d43-848c1cb9c6c8_grande.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{pr.title}}</h5>
+      <p class="card-text">id={{pr.id}}</p>
+      <p class="card-text">price={{pr.price}}</p>
+      <p class="card-text">quantity={{pr.quantity}}</p>
+      <p class="card-text">like={{pr.like}}</p>
+      <button class="btn btn-primary" >Buy</button>
+      <button class="btn btn-primary" (click)="increment()">Like</button>
+      
+      <button class="btn btn-info" [routerLink]="['/product',pr.id]" >Details</button>
+      
+      <button class="btn btn-primary" (click)="delete(pr.id)">Delete</button>
+      <button class="btn btn-info"  >calculstocke</button>
+
+    </div>
+  </div>

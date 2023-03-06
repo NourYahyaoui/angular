@@ -14,21 +14,27 @@
     <div class="row">
     <div class="col-md-4" style="width: 18rem;" *ngFor="let p of listProduct, let i=index" >
         <div *ngIf="p.price<priceMax || priceMax==null" >
-        <img src="..\..\assets\P1T026-2-PLAYCDGBIGREDHEARTPRINTANDEMBLEMT-SHIRTWHITE1_da46741c-319a-48bb-9d43-848c1cb9c6c8_grande.webp" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{p.title}}</h5>
-          <p class="card-text">id={{p.id}}</p>
-          <p class="card-text">price={{p.price}}</p>
-          <p class="card-text">quantity={{p.quantity}}</p>
-          <p class="card-text">like={{p.like}}</p>
-          <button class="btn btn-primary" (click)="buy(i)" [disabled]="p.quantity==0">Buy</button>
-          <button class="btn btn-primary" (click)="like(i)">Like</button>
-          
-          <button class="btn btn-info" [routerLink]="['/product',p.id]" >Details</button>
-          
-          <button class="btn btn-info" (click)="calculer()" >calculstocke</button>
 
-        </div>
+
+<!--
+    <img src="..\..\assets\P1T026-2-PLAYCDGBIGREDHEARTPRINTANDEMBLEMT-SHIRTWHITE1_da46741c-319a-48bb-9d43-848c1cb9c6c8_grande.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{pr.title}}</h5>
+      <p class="card-text">id={{pr.id}}</p>
+      <p class="card-text">price={{pr.price}}</p>
+      <p class="card-text">quantity={{pr.quantity}}</p>
+      <p class="card-text">like={{pr.like}}</p>
+      <button class="btn btn-primary" (click)="buy(i)" [disabled]="pr.quantity==0">Buy</button>
+      <button class="btn btn-primary" (click)="like(i)">Like</button>
+      
+      <button class="btn btn-info" [routerLink]="['/product',pr.id]" >Details</button>
+      
+      <button class="btn btn-info" (click)="calculer()" >calculstocke</button>
+
+    </div>
+-->
+
+        <app-product-item [pr]="p" (incrementEvent)="like ($event)"></app-product-item>
       </div>
       
     </div>
